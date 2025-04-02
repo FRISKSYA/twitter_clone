@@ -7,6 +7,7 @@ COPY package.json package-lock.json ./
 
 # 明示的に必要なパッケージをインストール
 RUN npm install @supabase/supabase-js @supabase/ssr
+RUN npm install --save-dev @types/react @types/react-dom
 RUN npm ci
 
 # アプリケーションコードのコピー
