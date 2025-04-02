@@ -1,5 +1,5 @@
 "use client";
-import { supabase } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import { AuthError } from "@supabase/supabase-js";
 import { useState } from "react";
 
@@ -7,6 +7,9 @@ export default function ForgetPassword() {
   const [email, setEmail] = useState<string>("");
   const [isSend, setIsSend] = useState<boolean>(false);
   const [error, setError] = useState<AuthError | null>(null);
+  
+  // Supabaseクライアントを初期化
+  const supabase = createClient();
 
   const handleSubmitEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
