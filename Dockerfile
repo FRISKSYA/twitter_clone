@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN npm install @react-icons/all-files
 RUN npm install
 
 COPY . .
