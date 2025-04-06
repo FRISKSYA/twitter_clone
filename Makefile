@@ -1,11 +1,10 @@
-.PHONY: up
-up:
-	docker run -d -p 3000:3000 -v $(PWD):/app -v /app/node_modules --name twitter-clone twitter-clone
-
 .PHONY: build
-build: up
+build:
 	docker build -t twitter-clone .
 
+.PHONY: up
+up: build
+	docker run -d -p 3000:3000 -v $(PWD):/app -v /app/node_modules --name twitter-clone twitter-clone
 
 .PHONY: down
 down:
