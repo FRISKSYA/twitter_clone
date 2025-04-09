@@ -1,20 +1,27 @@
+.PHONY: start
+start:
+	docker compose up -d
+
 .PHONY: build
 build:
-	docker build -t twitter-clone .
+	docker compose build
 
 .PHONY: up
-up: build
-	docker run -d -p 3000:3000 -v $(PWD):/app -v /app/node_modules --name twitter-clone twitter-clone
+up:
+	docker compose up -d
 
 .PHONY: down
 down:
-	docker stop twitter-clone || true
-	docker rm twitter-clone || true
+	docker compose down
+
+.PHONY: fclean
+fclean:
+	docker compose down --rmi all --volumes --remove-orphans
 
 .PHONY: logs
 logs:
-	docker logs -f twitter-clone
+	docker compose logs -f app
 
 .PHONY: sh
 sh:
-	docker exec -it twitter-clone sh
+	docker compose exec app sh

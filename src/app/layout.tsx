@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import News from "@/components/News";
+import SessionWrapper from "@/components/SessionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <SessionWrapper>
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className='flex justify-between max-w-6xl mx-auto'>
@@ -48,5 +50,6 @@ export default function RootLayout({
         </div>  
       </body>
     </html>
+    </SessionWrapper>
   );
 }
