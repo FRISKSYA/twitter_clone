@@ -10,8 +10,8 @@ export default function Sidebar() {
 
       console.log("Session state:", session);
     return (
-      <div className='flex flex-col gap-4 p-3'>
-        <div>
+      <div className='flex flex-col p-3 justify-between h-screen'>
+        <div className='flex flex-col gap-4'>
 
         <Link href='/'>
           <FaSquareXTwitter className='w-16 h-16 cursor-pointer 
