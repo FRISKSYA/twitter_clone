@@ -7,6 +7,7 @@ import { IoIosHome } from "react-icons/io";
 
 export default function Sidebar() {
       const { data: session } = useSession();
+      console.log(session);
     return (
       <div className='flex flex-col gap-4 p-3'>
         <Link href='/'>
