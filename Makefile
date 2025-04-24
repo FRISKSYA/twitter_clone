@@ -25,3 +25,8 @@ logs:
 .PHONY: sh
 sh:
 	docker compose exec app sh
+
+.PHONY: cloudflare-build
+cloudflare-build:
+	NODE_VERSION=20.0.0 npm install
+	npm run build
