@@ -14,11 +14,13 @@ const handler = NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
     callbacks:{
         async session({ session , token } : { session: Session; token: JWT }) {
-            session.user.username = session.user.name
-                .split(' ')
-                .join('')
-                .toLocaleLowerCase();
-            session.user.uid = token.sub;
+            if (session.user && session.user.name) {  // 安全チェックを追加
+                session.user.username = session.user.name
+                    .split(' ')
+                    .join('')
+                    .toLocaleLowerCase();
+                session.user.uid = token.sub;
+            }
             return session;
         }
     }
