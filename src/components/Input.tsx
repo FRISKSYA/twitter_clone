@@ -2,9 +2,11 @@
 
 import { useSession } from 'next-auth/react';
 import { HiOutlinePhotograph } from 'react-icons/hi';
+import { useRef } from 'react';
 
 export default function Input() {
     const { data: session } = useSession();
+    const imagePickRef = useRef(null);
 
     if (!session) return null;
     return (
@@ -26,6 +28,7 @@ export default function Input() {
                 pt-2.5'>
                     <HiOutlinePhotograph className='h-10 w-10 p-2 text-sky-500 hover:bg-sky-100 rounded-full
                     cursor-pointer' />
+                    <input type="file" ref={imagePickRef} />
                     <button disabled className='bg-blue-400 text-white 
                     px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95
                     disabled:opacity-50'>
